@@ -1,11 +1,15 @@
 import React from 'react'
-import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Mytask from './pages/MyTask/mytask'
+import Complete from './pages/Complete/complete'
 
 function App() {
   return (
-    <div className='Add'>
-      <h1>My Todos</h1>
-      <div></div>
+    <div className='Container'>
+      <Routes>
+        <Route path='/' element={<Mytask />} />
+        <Route path='/complete' element={<Complete />} />
+      </Routes>
     </div>
   )
 }

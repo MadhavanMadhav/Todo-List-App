@@ -1,0 +1,22 @@
+.TodoList{
+    width: 20%;
+    height: 100vh;
+    background-color: #353434;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-bar{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-weight: 800;
+    font-size: 2.0em;
+}
+
+label:hover{
+    cursor: pointer;
+    color: aliceblue;
+}

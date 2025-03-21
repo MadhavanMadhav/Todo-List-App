@@ -1,0 +1,39 @@
+.MenuContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.taskscreen {
+    width: 80vw;
+    height: 100%;
+    background-color: #1f1e1e;
+}
+
+.input-container{
+    margin-top: 25px;
+    margin-left: 25%;
+    display: flex;
+    gap: 20px;
+}
+
+input{
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: 800;
+    border: none;
+}
+
+button{
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 800;
+    background-color: lawngreen;
+    cursor: pointer;
+}
+
+button:hover{
+    background: rgb(119, 219, 18);
+}

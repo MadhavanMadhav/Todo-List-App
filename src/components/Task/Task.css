@@ -1,0 +1,58 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.task-box {
+    display: flex;
+    align-items: center;
+    background-color: #ae8888;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.task-box:hover {
+    transform: translate(1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.icon {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon .icon-tick {
+    color: green;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.icon .icon-tick:hover {
+    transform: scale(1.2);
+}
+
+.icon .icon-delete {
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.icon .icon-delete:hover {
+    transform: scale(1.2);
+}
