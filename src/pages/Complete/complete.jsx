@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './complete.css'
 import Menu from '../../components/Menu/Menu'
 import Task from '../../components/Task/Task'
 
+function Complete(props) {
+  // const{item}=props
+  const [comList, setComList] = useState(JSON.parse(localStorage.getItem('com_list')) ??[])
 
-function Complete() {
   return (
     <div className='completeContainer'>
       <Menu />
       <div className='complete-screen'>
-          <Task />
-        </div>
+        {comList.map((item, index) => (
+          <Task
+            title={item.description} />
+        )
+        )}
+
       </div>
+    </div>
   )
 }
 

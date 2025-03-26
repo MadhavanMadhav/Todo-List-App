@@ -7,12 +7,14 @@
     width: 100%;
     max-width: 700px;
     margin: auto;
+    margin-top: 20px;
+
 }
 
 .task-box {
     display: flex;
     align-items: center;
-    background-color: #ae8888;
+    background-color: #cfcfcf;
     padding: 1rem;
     border-radius: 10px;
 }
