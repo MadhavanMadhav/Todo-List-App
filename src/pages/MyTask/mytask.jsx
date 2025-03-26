@@ -4,7 +4,6 @@ import Menu from '../../components/Menu/Menu';
 import Task from '../../components/Task/Task';
 import { TiTick } from 'react-icons/ti';
 import { MdDeleteSweep } from 'react-icons/md';
-// import Complete from '../Complete/complete';
 
 function Mytask() {
   const [taskValue, setTaskValue] = useState('')
