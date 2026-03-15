@@ -1,85 +1,92 @@
-import React, { useEffect, useState } from 'react';
-import './mytask.css';
-import Menu from '../../components/Menu/Menu';
-import Task from '../../components/Task/Task';
-import { TiTick } from 'react-icons/ti';
-import { MdDeleteSweep } from 'react-icons/md';
+import React, { useState } from "react";
+import "./mytask.css";
+import Menu from "../../components/Menu/Menu";
+import Task from "../../components/Task/Task";
+
+import { TiTick } from "react-icons/ti";
+import { MdDeleteSweep } from "react-icons/md";
 
 function Mytask() {
-  const [taskValue, setTaskValue] = useState('')
-  const [taskList, setTaskList] = useState(JSON.parse(localStorage.getItem('task_list')) ?? [])
-  const [comList, setComList] = useState(JSON.parse(localStorage.getItem('com_list')) ?? [])
+  const [taskValue, setTaskValue] = useState("");
 
+  const [taskList, setTaskList] = useState(
+    JSON.parse(localStorage.getItem("task_list")) ?? [],
+  );
 
-  function onAddTaskClicked() {
-    if (taskValue.trim() !== '') {
-      addTaskToList();
-    } else {
-      console.log('');
-    }
-  }
+  const [comList, setComList] = useState(
+    JSON.parse(localStorage.getItem("com_list")) ?? [],
+  );
 
-  function addTaskToList() {
-    const todoTask = {
+  function addTask() {
+    if (taskValue.trim() === "") return;
+
+    const newTask = {
       description: taskValue,
-      isComplete: false,
     };
-    let dupList = taskList
-    dupList.push(todoTask)
-    setTaskList(dupList)
-    setTaskValue('')
-    localStorage.setItem('task_list', JSON.stringify(taskList))
+
+    const newList = [...taskList, newTask];
+
+    setTaskList(newList);
+    localStorage.setItem("task_list", JSON.stringify(newList));
+
+    setTaskValue("");
   }
 
-  function onCompleteClicked(item, index) {
-    let newList = [...taskList]
-    newList.splice(index, 1)
-    setTaskList(newList)
-    localStorage.setItem('task_list', JSON.stringify(taskList))
-    let comPage = comList
-    comList.push(item)
-    setComList(comPage)
-    localStorage.setItem('com_list', JSON.stringify(comList))
+  function completeTask(item, index) {
+    const newTaskList = [...taskList];
+    newTaskList.splice(index, 1);
+
+    setTaskList(newTaskList);
+    localStorage.setItem("task_list", JSON.stringify(newTaskList));
+
+    const newComList = [...comList, item];
+
+    setComList(newComList);
+    localStorage.setItem("com_list", JSON.stringify(newComList));
   }
 
   function deleteTask(index) {
-    // console.log(index)
-    let dubList = [...taskList]
-    dubList.splice(index, 1)
-    setTaskList(dubList)
+    const newList = [...taskList];
+    newList.splice(index, 1);
+
+    setTaskList(newList);
+    localStorage.setItem("task_list", JSON.stringify(newList));
   }
+
   return (
     <div className="MenuContainer">
       <Menu />
+
       <div className="taskscreen">
         <div className="input-container">
           <input
-            className="inputText"
             value={taskValue}
-            placeholder={'Enter Your Task'}
-            onChange={(e) => {
-              setTaskValue(e.target.value);
-            }}
+            placeholder="Enter Task..."
+            onChange={(e) => setTaskValue(e.target.value)}
           />
-          <button onClick={onAddTaskClicked}>Add Task</button>
+
+          <button onClick={addTask}>Add Task</button>
         </div>
-        <div className='tasks'>
+
+        <div className="tasks">
           {taskList.map((item, index) => (
-              <Task
-                title={item.description}
-                rightIcon={
-                  <TiTick
-                    className="icon-tick"
-                    onClick={() => onCompleteClicked(item, index)}
-                  />}
-                rightDelIcon={
-                  <MdDeleteSweep
-                    className="icon-delete"
-                    onClick={() => deleteTask(index)}
-                  />
-                }
-              />
-              ))}
+            <Task
+              key={index}
+              title={item.description}
+              rightIcon={
+                <TiTick
+                  className="icon-tick"
+                  onClick={() => completeTask(item, index)}
+                />
+              }
+              rightDelIcon={
+                <MdDeleteSweep
+                  className="icon-delete"
+                  onClick={() => deleteTask(index)}
+                />
+              }
+            />
+          ))}
         </div>
       </div>
     </div>
